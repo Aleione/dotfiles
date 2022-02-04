@@ -1,26 +1,16 @@
 { config, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  commaSrc = pkgs.fetchFromGitHub {
-    owner  = "Shopify";
-    repo   = "comma";
-    rev    = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
-    sha256 = "sha256-IT7zlcM1Oh4sWeCJ1m4NkteuajPxTnNo1tbitG0eqlg=";
-  };
-in {
+{
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "zlx";
-  home.homeDirectory = "/home/zlx";
+
   manual.manpages.enable = false;
 
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    (callPackage commaSrc {})
 
     # NixOS
     cachix
@@ -56,13 +46,13 @@ in {
     # nethogs # monitoring
 
     bat
-    gitAndTools.delta
-    gitAndTools.diff-so-fancy
-    teamviewer
-    unstable.vscode
+    # gitAndTools.delta
+    # gitAndTools.diff-so-fancy
+    # teamviewer
+    vscode
 
     # D toolchain
-    #unstable.dmd unstable.dub unstable.ldc
+    #dmd dub ldc
 
     # DevOps
     # azure-cli
@@ -70,31 +60,34 @@ in {
     # kubernetes-helm
     # kubectl
     # terraform
-    unstable.lens
+    # lens
 
     # gui sys
     gparted
-    wireshark-qt
+    # wireshark-qt
     glxinfo
 
     # gui general
     google-chrome firefox # opera # browsers
+    virtualbox
     # libreoffice
-    unstable.onlyoffice-bin
-    unstable.discord-ptb slack tdesktop unstable.teams zoom-us # IM / Video
-    unstable.vscode # GUI text editors / IDEs
-    unstable.postman # API client
+    nodePackages.npm
+    onlyoffice-bin
+    discord
+    slack tdesktop teams zoom-us # IM / Video
+    vscode # GUI text editors / IDEs
+    postman # API client
     # remmina # remote desktop
     deluge transmission-gtk # P2P/Torrent
     tilix # alacritty # Terminal emulators
     spotify vlc mpv # Audio & video players
     # reaper audacity # Audio editing
-    blender # 3D modeling
-    gimp inkscape # Image editing
+    # blender # 3D modeling
+    # gimp inkscape # Image editing
     pick-colour-picker
     gcolor3
     xclip xorg.xhost # X11 related
-    xournal # Edit PDFs
+    # xournal # Edit PDFs
     # qrencode
 
     # sys
@@ -102,7 +95,7 @@ in {
     ext4magic testdisk # disk recovery
     # iotop # monitoring
     p7zip unrar # archival and compression (unzip is installed via sys/*.nix)
-    # usbutils pciutils
+    usbutils pciutils
 
     # blockchain
     # go-ethereum
@@ -120,12 +113,15 @@ in {
     #plano-theme
     #plata-theme
     qogir-theme
+    speedtest-cli
     #shades-of-gray-theme
     #sierra-gtk-theme
     #solarc-gtk-theme
     #sweet
     #theme-obsidian2
     #theme-vertex
+    veracrypt
+    yarn
     yaru-theme
     #zuki-themes
   ];
@@ -133,9 +129,9 @@ in {
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
-    userName = "Petar Kirov";
-    userEmail = "petar.p.kirov@gmail.com";
-    #delta.enable = true;
+    userName = "Aleione";
+    userEmail = "bergamaschi@gmail.com";
+    delta.enable = true;
     aliases = {
 	# lg - show git log
 	# lr - show git log in reverse
@@ -151,7 +147,7 @@ in {
     };
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = "code";
       };
       color = {
         ui = true;
@@ -170,5 +166,5 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.11";
 }

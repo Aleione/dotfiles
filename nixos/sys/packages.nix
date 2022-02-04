@@ -2,9 +2,10 @@
 {
   services.openssh.enable = true;
   virtualisation.docker.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nixStable;
+    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';

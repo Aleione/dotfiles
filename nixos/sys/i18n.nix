@@ -13,5 +13,5 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Sofia";
+  time.timeZone = "Europe/Rome";
 }

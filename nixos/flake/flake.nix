@@ -9,14 +9,15 @@
 
   outputs = inputs@{ home-manager, nixpkgs, ... }:
   let
-    name = "zlx";
+    name = "ale";
+    host = "vivobook-x509fb";
   in
   {
     nixosConfigurations = {
-      zlx-nixos-desktop = nixpkgs.lib.nixosSystem {
+      "${host}" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ../machines/zlx-nixos-desktop/configuration.nix
+          ../machines/${host}/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
