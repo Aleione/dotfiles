@@ -25,7 +25,7 @@
     asciinema
     # w3m
     yq
-
+    hplipWithPlugin
     # Build systems
     # cmake gnumake ninja meson
 
