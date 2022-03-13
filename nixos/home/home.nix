@@ -70,9 +70,8 @@
     # gui general
     google-chrome firefox # opera # browsers
     virtualbox
-    # libreoffice
+    libreoffice
     nodePackages.npm
-    onlyoffice-bin
     discord
     slack tdesktop teams zoom-us # IM / Video
     vscode # GUI text editors / IDEs
