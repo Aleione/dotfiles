@@ -56,7 +56,7 @@
 
     # DevOps
     # azure-cli
-    # docker-compose
+    docker-compose
     # kubernetes-helm
     # kubectl
     # terraform
