@@ -66,6 +66,7 @@
     gparted
     # wireshark-qt
     glxinfo
+    openboard
 
     # gui general
     google-chrome firefox # opera # browsers
